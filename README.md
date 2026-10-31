@@ -1,78 +1,42 @@
-#  Minta Services
+# Minta Services : mintaservices.com
 
-**African Technology Solutions**  
-Solutions d’Infrastructure Cloud et Web — Bamako, Mali 🇲🇱
+Site principal de **Minta Services**, African Technology Solution (Missira, Ségou, Mali).
 
-> Votre partenaire technique de A à Z : sites web, serveurs VPS, aaPanel, VPN, domaines et formations.
+Le dossier `site/` contient tout ce qui va dans le dossier du site sur le serveur : la page d'accueil, les styles, le script et les logos de chaque marque.
 
-[![Site Web](https://img.shields.io/badge/Site-mintaservices.com-blue?style=flat-square)](https://mintaservices.com)
-[![WhatsApp](https://img.shields.io/badge/WhatsApp-+223_77_29_52_59-25D366?style=flat-square&logo=whatsapp)](https://wa.me/22377295259)
-[![Mande-IA](https://img.shields.io/badge/Demo-Mande--IA-purple?style=flat-square)](https://ia.mintaservices.com)
-[![Academy](https://img.shields.io/badge/Formation-Minta_Academy-orange?style=flat-square)](https://github.com/Professor-minta/Minta-Academy)
+| Marque | Logo | Adresse | E-mail |
+|---|---|---|---|
+| Minta Services | `site/assets/logos/minta-services.webp` | mintaservices.com | contact@mintaservices.com |
+| Mande-IA | `site/assets/logos/mande-ia.webp` | ia.mintaservices.com | ia@mintaservices.com |
+| Minta Academy | `site/assets/logos/minta-academy.webp` | mintaservices.com/academy | academy@mintaservices.com |
+| Data-Collections | `site/assets/logos/data-collections.webp` | data.mintaservices.com | data@mintaservices.com |
+| Minta Entrepreneurship | `site/assets/logos/entrepreneurship.webp` | mintaservices.com/entrepreneurship.html | entrepreneuriat@mintaservices.com |
 
----
+Fondateur : Professeur Issa Minta, professorminta@gmail.com.
 
-## Nos Services
+## Mettre le site en ligne (aaPanel)
 
-| Service                        | Description                                      |
-|--------------------------------|--------------------------------------------------|
-| **Création de sites web**      | Sites vitrines, pages professionnelles, boutiques |
-| **Gestion de serveurs VPS**    | Installation, sécurisation et maintenance        |
-| **Configuration aaPanel**      | Mise en place complète du panneau de contrôle    |
-| **Panneau VPN (3X-UI)**        | Installation et configuration de VPN sécurisé    |
-| **Enregistrement de domaine**  | .com, .ml, .africa, .net, .org                   |
-| **Formation Minta Academy**    | Formation pratique Cloud + Node.js + IA locale   |
+Dans le **Terminal** d'aaPanel. La première commande garde une copie des anciennes pages, hors du site.
 
----
+```bash
+cd /www/wwwroot/mintaservices.com
+mkdir -p /root/sauvegarde-site && cp -n index.html academy.html paiement.html video.html /root/sauvegarde-site/ 2>/dev/null
+cd /www/wwwroot && git clone https://github.com/Professor-minta/minta-services.git minta-services-site
+cp -a minta-services-site/site/. /www/wwwroot/mintaservices.com/
+```
 
-## 🎓 Minta Academy
+Seuls `index.html` et le dossier `assets/` sont remplacés ou ajoutés. Le cours `academy/`, `entrepreneurship.html` et les autres fichiers restent en place.
 
-Formation 100% pratique pour les jeunes du Mali :
+Mettre à jour plus tard :
 
-- Domaines & DNS
-- Serveur VPS (DigitalOcean)
-- aaPanel
-- Node.js & Déploiement
-- IA locale (Ollama + Open WebUI)
+```bash
+cd /www/wwwroot/minta-services-site && git pull && cp -a site/. /www/wwwroot/mintaservices.com/
+```
 
-→ Voir le dépôt : [Minta-Academy](https://github.com/Professor-minta/Minta-Academy)
+## Ajouter une vidéo YouTube
 
----
+Dans `site/index.html`, chaque vidéo a un attribut `data-youtube=""`. Mets-y l'identifiant de la vidéo : pour `https://www.youtube.com/watch?v=AbCdEfGhIjK`, c'est `AbCdEfGhIjK`. La vidéo se lance alors dans la page, et ne se charge qu'au clic, pour économiser les données mobiles. Sans identifiant, le bouton ouvre la chaîne YouTube @mintaservices.
 
-##  Notre Produit IA
+## Les e-mails à créer
 
-**Mande-IA** — Assistant IA qui parle Bambara  
-Démo : [ia.mintaservices.com](https://ia.mintaservices.com)
-Donne bambara (https://data.mintaservices.com)
----
-
-## 🛠️ Technologies utilisées
-
-- **Frontend / Backend** : HTML, CSS, JavaScript, Node.js
-- **Serveur** : DigitalOcean, Ubuntu, aaPanel
-- **IA Locale** : Ollama, Open WebUI
-- **VPN** : 3X-UI / Xray
-- **Domaines** : Namecheap
-- **Outils** : GitHub, WhatsApp Business
-
----
-
-## 📞 Contact
-
-- **WhatsApp** : [+223 77 29 52 59](https://wa.me/22377295259)
-- **Email** : professorminta@gmail.com
-- **Email Service** : info@mintaservices.com
-- **Site** : [mintaservices.com](https://mintaservices.com)
-- **Localisation** : Bamako / Ségou, Mali
-
----
-
-## 👤 Fondateur
-
-**Issa Minta** (Professor Minta)  
-Full-Stack AI Engineer  
-Créateur de Mande-IA et fondateur de Minta Services
-
----
-
-⭐ Si tu trouves ce projet utile, mets une étoile !
+Dans aaPanel, **Mail Server**, vérifie que ces boîtes existent sur le domaine `mintaservices.com` : `contact`, `academy`, `ia`, `data` et `entrepreneuriat`. Une boîte qui n'existe pas renvoie les messages à l'expéditeur.
