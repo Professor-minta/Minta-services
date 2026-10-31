@@ -10,7 +10,7 @@ Le dossier `site/` contient tout ce qui va dans le dossier du site sur le serveu
 | Mande-IA | `site/assets/logos/mande-ia.webp` | ia.mintaservices.com | ia@mintaservices.com |
 | Minta Academy | `site/assets/logos/minta-academy.webp` | mintaservices.com/academy | academy@mintaservices.com |
 | Data-Collections | `site/assets/logos/data-collections.webp` | data.mintaservices.com | data@mintaservices.com |
-| Minta Entrepreneurship | `site/assets/logos/entrepreneurship.webp` | mintaservices.com/entrepreneurship.html | entrepreneuriat@mintaservices.com |
+| Minta Entrepreneurship | `site/assets/logos/entrepreneurship.webp` | mintaservices.com/entrepreneuriat | entrepreneuriat@mintaservices.com |
 
 Fondateur : Professeur Issa Minta, professorminta@gmail.com.
 
@@ -25,7 +25,15 @@ cd /www/wwwroot && git clone https://github.com/Professor-minta/minta-services.g
 cp -a minta-services-site/site/. /www/wwwroot/mintaservices.com/
 ```
 
-Seuls `index.html` et le dossier `assets/` sont remplacés ou ajoutés. Le cours `academy/`, `entrepreneurship.html` et les autres fichiers restent en place.
+Seuls `index.html`, `entrepreneuriat/` et le dossier `assets/` sont remplacés ou ajoutés. Le cours `academy/` et les autres fichiers restent en place.
+
+L'ancienne page `entrepreneurship.html` renvoie vers la nouvelle :
+
+```bash
+cd /www/wwwroot/mintaservices.com
+cp -n entrepreneurship.html /root/sauvegarde-site/ 2>/dev/null
+echo '<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=/entrepreneuriat/"><link rel="canonical" href="https://mintaservices.com/entrepreneuriat/"><a href="/entrepreneuriat/">Minta Entrepreneurship</a>' > entrepreneurship.html
+```
 
 Mettre à jour plus tard :
 
