@@ -33,3 +33,10 @@
 
 .foot-brand a { color: var(--teal-bright); }
 @media (max-width: 420px) { .ent-page .brand-text strong { font-size: 14px; letter-spacing: 0; } }
+
+.collab { background: var(--snow); color: var(--ink); padding: clamp(56px, 8vw, 104px) 0; }
+.collab .head p { color: var(--mute-l); }
+@media (min-width: 1100px) { .collab-roles { grid-template-columns: repeat(3, 1fr); } }
+.collab-actions { margin-top: 36px; }
+.btn-line-dark { border: 2px solid var(--ink); color: var(--ink); }
+.btn-line-dark:hover { background: var(--ink); color: var(--white); }
