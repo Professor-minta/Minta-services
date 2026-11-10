@@ -17,7 +17,7 @@
 
   document.querySelectorAll('[data-youtube]').forEach((block) => {
     const id = (block.dataset.youtube || '').trim();
-    if (!/^[\w-]{11}$/.test(id)) return;
+    if (!/^[\w-]{11}$/.test(id)) { block.hidden = true; return; }
     const frame = block.querySelector('.video-frame, .video-thumb');
     if (!frame) return;
     frame.href = `https://www.youtube.com/watch?v=${id}`;

@@ -43,7 +43,7 @@ cd /www/wwwroot/minta-services-site && git pull && cp -a site/. /www/wwwroot/min
 
 ## Ajouter une vidéo YouTube
 
-Dans `site/index.html`, chaque vidéo a un attribut `data-youtube=""`. Mets-y l'identifiant de la vidéo : pour `https://www.youtube.com/watch?v=AbCdEfGhIjK`, c'est `AbCdEfGhIjK`. La vidéo se lance alors dans la page, et ne se charge qu'au clic, pour économiser les données mobiles. Sans identifiant, le bouton ouvre la chaîne YouTube @mintaservices.
+Dans `site/index.html`, chaque vidéo a un attribut `data-youtube=""`. Mets-y l'identifiant de la vidéo : pour `https://www.youtube.com/watch?v=AbCdEfGhIjK`, c'est `AbCdEfGhIjK`. La vidéo se lance alors dans la page, et ne se charge qu'au clic, pour économiser les données mobiles. Sans identifiant, la vidéo reste cachée : la page ne montre que les vidéos qui existent vraiment.
 
 ## Les e-mails à créer
 

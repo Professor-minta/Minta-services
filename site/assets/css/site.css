@@ -202,3 +202,5 @@ a.contact-main:hover { background: #ffad52; border-color: #ffad52; }
 .foot-eco a:first-child { color: var(--white); font-weight: 700; }
 .foot-eco a:hover { color: var(--teal-bright); }
 .copy { color: #7d8f9e; font-size: 14px; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--line-d); }
+
+[data-youtube][hidden] { display: none !important; }
