@@ -32,3 +32,9 @@
     }, { once: true });
   });
 })();
+
+(() => {
+  const lien = document.getElementById('presentation-pdf');
+  if (!lien) return;
+  fetch(lien.getAttribute('href'), { method: 'HEAD' }).then((r) => { if (r.ok) lien.hidden = false; }).catch(() => {});
+})();

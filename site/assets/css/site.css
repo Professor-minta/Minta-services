@@ -204,3 +204,19 @@ a.contact-main:hover { background: #ffad52; border-color: #ffad52; }
 .copy { color: #7d8f9e; font-size: 14px; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--line-d); }
 
 [data-youtube][hidden] { display: none !important; }
+
+.hero-logo img { aspect-ratio: 960 / 654; object-fit: contain; -webkit-mask-image: none; mask-image: none; border-radius: 28px; background: #ecebe6; box-shadow: 0 0 0 1px rgba(255, 255, 255, .08), 0 30px 80px rgba(0, 0, 0, .45), 0 0 120px rgba(92, 198, 204, .16); }
+.hero-logo { margin: 0; max-width: 560px; justify-self: center; width: 100%; }
+@media (min-width: 1000px) { .hero-logo { margin: 0; } .hero-logo img { transform: none; } }
+
+.presentation { padding: clamp(56px, 8vw, 104px) 0; background: var(--night-2); border-bottom: 1px solid var(--line-d); }
+.boucle { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; counter-reset: boucle; }
+@media (min-width: 720px) { .boucle { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .boucle { grid-template-columns: repeat(4, 1fr); } }
+.boucle li { counter-increment: boucle; position: relative; padding: 24px 22px 26px; border-radius: 18px; background: rgba(20, 42, 61, .6); border: 1px solid var(--line-d); }
+.boucle li::after { content: counter(boucle); position: absolute; top: 18px; right: 20px; font-weight: 800; font-size: 28px; color: var(--orange); opacity: .85; }
+.boucle img { width: 56px; height: 56px; border-radius: 14px; object-fit: contain; }
+.boucle h3 { margin: 14px 0 6px; font-size: 1.15rem; }
+.boucle p { margin: 0; color: var(--mute-d); font-size: 16px; }
+.presentation-actions { margin-top: 32px; }
+.btn[hidden] { display: none; }
