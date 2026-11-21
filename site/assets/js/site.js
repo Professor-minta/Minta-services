@@ -32,3 +32,49 @@
     }, { once: true });
   });
 })();
+
+(() => {
+  const diapo = document.querySelector('.diapo');
+  if (!diapo) return;
+  const slides = [...diapo.querySelectorAll('.diapo-slide')];
+  const points = diapo.querySelector('.diapo-points');
+  const calme = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let actuel = 0;
+  let minuteur = 0;
+  const boutons = slides.map((_, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('role', 'tab');
+    b.setAttribute('aria-label', `Image ${i + 1} sur ${slides.length}`);
+    b.onclick = () => { montrer(i); relancer(); };
+    points.append(b);
+    return b;
+  });
+  const charger = (k) => { const img = slides[(k + slides.length) % slides.length].querySelector('img[data-src]'); if (img) { img.src = img.dataset.src; img.removeAttribute('data-src'); } };
+  function montrer(i) {
+    actuel = (i + slides.length) % slides.length;
+    charger(actuel);
+    charger(actuel + 1);
+    slides.forEach((s, k) => { s.classList.toggle('is-on', k === actuel); s.setAttribute('aria-hidden', String(k !== actuel)); });
+    boutons.forEach((b, k) => b.setAttribute('aria-selected', String(k === actuel)));
+  }
+  function relancer() {
+    clearInterval(minuteur);
+    if (!calme) minuteur = setInterval(() => montrer(actuel + 1), 4000);
+  }
+  diapo.addEventListener('mouseenter', () => clearInterval(minuteur));
+  diapo.addEventListener('mouseleave', relancer);
+  diapo.addEventListener('focusin', () => clearInterval(minuteur));
+  diapo.addEventListener('focusout', relancer);
+  let debut = null;
+  diapo.addEventListener('touchstart', (e) => { debut = e.touches[0].clientX; }, { passive: true });
+  diapo.addEventListener('touchend', (e) => {
+    if (debut === null) return;
+    const ecart = e.changedTouches[0].clientX - debut;
+    debut = null;
+    if (Math.abs(ecart) > 40) { montrer(actuel + (ecart < 0 ? 1 : -1)); relancer(); }
+  });
+  document.addEventListener('visibilitychange', () => (document.hidden ? clearInterval(minuteur) : relancer()));
+  montrer(0);
+  relancer();
+})();
