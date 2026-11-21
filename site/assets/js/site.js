@@ -50,14 +50,17 @@
     points.append(b);
     return b;
   });
+  const charger = (k) => { const img = slides[(k + slides.length) % slides.length].querySelector('img[data-src]'); if (img) { img.src = img.dataset.src; img.removeAttribute('data-src'); } };
   function montrer(i) {
     actuel = (i + slides.length) % slides.length;
+    charger(actuel);
+    charger(actuel + 1);
     slides.forEach((s, k) => { s.classList.toggle('is-on', k === actuel); s.setAttribute('aria-hidden', String(k !== actuel)); });
     boutons.forEach((b, k) => b.setAttribute('aria-selected', String(k === actuel)));
   }
   function relancer() {
     clearInterval(minuteur);
-    if (!calme) minuteur = setInterval(() => montrer(actuel + 1), 3000);
+    if (!calme) minuteur = setInterval(() => montrer(actuel + 1), 4000);
   }
   diapo.addEventListener('mouseenter', () => clearInterval(minuteur));
   diapo.addEventListener('mouseleave', relancer);
