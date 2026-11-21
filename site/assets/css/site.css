@@ -219,4 +219,12 @@ a.contact-main:hover { background: #ffad52; border-color: #ffad52; }
 .boucle h3 { margin: 14px 0 6px; font-size: 1.15rem; }
 .boucle p { margin: 0; color: var(--mute-d); font-size: 16px; }
 .presentation-actions { margin-top: 32px; }
-.btn[hidden] { display: none; }
+.diapo { margin: 0 0 36px; }
+.diapo-vue { position: relative; aspect-ratio: 16 / 9; border-radius: 20px; overflow: hidden; background: #f3eee2; border: 1px solid var(--line-d); box-shadow: 0 24px 60px rgba(0, 0, 0, .35); }
+.diapo-slide { position: absolute; inset: 0; margin: 0; display: grid; place-items: center; opacity: 0; transition: opacity .7s ease; }
+.diapo-slide.is-on { opacity: 1; }
+.diapo-slide img { width: 100%; height: 100%; object-fit: contain; }
+.diapo-points { display: flex; justify-content: center; gap: 10px; margin-top: 16px; }
+.diapo-points button { width: 12px; height: 12px; padding: 0; border-radius: 50%; border: 0; background: var(--line-d); cursor: pointer; }
+.diapo-points button[aria-selected="true"] { width: 30px; border-radius: 6px; background: var(--orange); }
+@media (prefers-reduced-motion: reduce) { .diapo-slide { transition: none; } }
