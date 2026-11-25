@@ -12,7 +12,7 @@ Le dossier `site/` contient tout ce qui va dans le dossier du site sur le serveu
 | Data-Collections | `site/assets/logos/data-collections.webp` | data.mintaservices.com | data@mintaservices.com |
 | Minta Entrepreneurship | `site/assets/logos/entrepreneurship.webp` | mintaservices.com/entrepreneuriat | entrepreneuriat@mintaservices.com |
 
-Fondateur : Professeur Issa Minta, professorminta@gmail.com.
+Fondateur : Professeur Issa Minta, contact@mintaservices.com.
 
 ## Mettre le site en ligne (aaPanel)
 
